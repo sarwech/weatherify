@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+	background-color: #000;
+	color: #fff;
+	padding-top: 20px;
+	text-align: center;
+}
+
+h1, h3 {
+	font-family: 'Roboto';
+}
+
+.banner {
+	color: #3498db;
+	padding-bottom: 100px;
+}
+
+.temptype {
+	color: #3498db;
+}
+
+footer {
+	color: #3498db;
+	padding-top: 100px;
+
+}
