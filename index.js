@@ -109,22 +109,22 @@ function getWeather() {
 
           var toSearch = "cloudytwo";
 
-          function searchObj (obj, query) {
-
-              for (var key in obj) {
-                  var value = obj[key];
-
-                  if (typeof key === 'object') {
-                      return value;
-                  }
-
-                  if (key === query) {
-                      return value;
-                  }
-
+          function searchObj(obj, query) {
+            for (var key in obj) {
+              var value = obj[key];
+              if (typeof key === 'object') {
+                return value;
               }
 
+              if (key === query) {
+                return value;
+              }
+            }
           }
+
+
+
+
 
           console.log(searchObj(backgrounds, 'cloudy'));
           // Trying to build function for getting image based on icon
