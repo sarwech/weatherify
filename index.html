@@ -21,30 +21,38 @@
 
 </head>
 <body>
-  <div class="container-fluid text-center">
-    <h1 class="banner">weatherify</h1>
-    <div class="background"></div>
-    <div class="row">
-      <div class="col-md-6">
-        <h1 class="location"></h1>
-      </div>
-      <div class="col-md-6">
-        <h1 id="date">currently</h1>
+  <div id="wrapper">
+    <div id="header"></div>
+    <div id="content">
+      <div class="container-fluid text-center">
+        <h1 class="banner">weatherify</h1>
+        <div class="background"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <h1 class="location"></h1>
+          </div>
+          <div class="col-md-6">
+            <h1 id="date">currently</h1>
+          </div>
+        </div>
+          <canvas id="icon1" width="128" height="128"></canvas>
+        <div class="row">
+          <div class="col-md-6">
+            <h1 id="weather" class="weather"></h1>
+          </div>
+          <div class="col-md-6" id="card">
+            <div>
+              <h1 class="celsius front" id="change"></h1>
+            </div>
+            <div>
+              <h1 class="fahr back" id="change"></h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-      <canvas id="icon1" width="128" height="128"></canvas>
-    <div class="row">
-      <div class="col-md-6">
-        <h1 id="weather" class="weather"></h1>
-      </div>
-      <div class="col-md-6" id="card">
-        <div>
-          <h1 class="celsius front" id="change"></h1>
-        </div>
-        <div>
-          <h1 class="fahr back" id="change"></h1>
-        </div>
-      </div>
+    <div id="footer">
+    <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -52,8 +60,5 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
   <script src="index.js"></script>
-  <footer>
-  <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-  </footer>
 </body>
 </html>
