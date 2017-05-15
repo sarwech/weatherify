@@ -122,10 +122,6 @@ function getWeather() {
             }
           }
 
-
-
-
-
           console.log(searchObj(backgrounds, 'cloudy'));
           // Trying to build function for getting image based on icon
           // for (var i=0; i < backgrounds.length; i++) {

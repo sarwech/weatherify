@@ -44,7 +44,7 @@ h1, h3 {
 @media only screen and (max-width : 768px) {
 /* Styles */
   .banner {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
   
   #footer {
