@@ -135,7 +135,7 @@ function getWeather() {
           // };
 
           $("body").css({
-            "background-image": "linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ), url("+searchObj(backgrounds, icon)+")",
+            "background-image": "linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("+searchObj(backgrounds, icon)+")",
             "background-repeat": "no-repeat",
             "background-size": "cover",
           });

@@ -33,27 +33,25 @@ h1, h3 {
 }
 
 #footer {
-  padding-top: 350px;
+  padding-top: 250px;
   background: transparent;
-	color: #3498db;
-	width: 100%;
-	position: absolute;
+  color: #3498db;
+  width: 100%;
+  position: absolute;
 }
 
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 768px) {
 /* Styles */
   .banner {
+  	padding-top: 50px;
     padding-bottom: 20px;
   }
-  
   #footer {
     padding-top: 60px;
   }
-  .where {
-    float: left;
-  }
-  .when {
-    float: right;
+  #icon1 {
+  	padding-top: 20px;
+  	padding-bottom: 20px;
   }
 }
