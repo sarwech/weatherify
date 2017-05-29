@@ -1,49 +1,49 @@
 // Create and display timer
-function startTime() {
-  var today = new Date();
-  var hour = today.getHours();
-  var min = today.getMinutes();
-  var sec = today.getSeconds();
+const startTime = () => {
+  const today = new Date();
+  let hour = today.getHours();
+  let min = today.getMinutes();
+  let sec = today.getSeconds();
 
   hour = addZero(hour);
   min = addZero(min);
   sec = addZero(sec);
   
   document.getElementById('date').innerHTML =
-    hour + ":" + min + ":" + sec;
-  var t = setTimeout(() => startTime(), 500);
+    `${hour}:${min}:${sec}`;
+  const t = setTimeout(() => startTime(), 500);
 
 };
-function addZero(i) {
+const addZero = i => {
   if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
   return i;
 };
 
 startTime();
 
-function getWeather() {
+const getWeather = () => {
 
   // Start by checking if geolocation is available
   if (navigator.geolocation) {
 
     // If available, request it from device
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition(position => {
       
       // Store lat, lon and api key as variables to use later
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
       
       // Dark Sky and Google Maps keys
-      var dskey = "85e107fb88c997ff4f65746dba923323"
-      var mapskey = "AIzaSyAsW1o_tCCaDGH643RXZ0myxPCpfBxfovQ"
+      const dskey = "85e107fb88c997ff4f65746dba923323"
+      const mapskey = "AIzaSyAsW1o_tCCaDGH643RXZ0myxPCpfBxfovQ"
       
       // Magic happens here using Dark Sky API. ?exclude just does not ask API for M, H and flags
-      $.getJSON("https://crossorigin.me/https://api.darksky.net/forecast/" + dskey + "/" + lat + "," + lon + "?exclude=hourly,flags", function(weather) {
+      $.getJSON(`https://crossorigin.me/https://api.darksky.net/forecast/${dskey}/${lat},${lon}?exclude=hourly,flags`, function(weather) {
         
         // In JSON retrieve 'currently' and then 'summary' which is actual current weather description
         const {summary} = weather.currently;
-        var fahr = Math.floor(weather.currently.temperature);
-        var celsius = Math.floor((fahr - 32) * (5/9));
+        let fahr = Math.floor(weather.currently.temperature);
+        let celsius = Math.floor((fahr - 32) * (5/9));
         
         // findIcon("");
         
@@ -51,15 +51,15 @@ function getWeather() {
         console.log(icon);
         
         // Select colour, type of icon and play
-        var skycons = new Skycons({color: "white"});
+        const skycons = new Skycons({color: "white"});
         skycons.add("icon1", icon);
         skycons.play();
         
         // Add this to h1
       
         $(".weather").html(summary.toLowerCase());
-        $(".celsius").html(celsius + "<span class='temptype'>&deg;C</span>");
-        $(".fahr").html(fahr + "<span class='temptype'>&deg;F</span>");
+        $(".celsius").html(`${celsius}<span class='temptype'>&deg;C</span>`);
+        $(".fahr").html(`${fahr}<span class='temptype'>&deg;F</span>`);
         $("#card").flip(); 
 
         // $(".fahrenheit").html(temp + "<span class='temptype'>F</span>")
@@ -78,48 +78,45 @@ function getWeather() {
         // });
         
         // Get city/town name from Google Maps - slightly dodgy implementation
-        $.getJSON([
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=",
-          lat,
-          ",",
-          lon,
-          "&key=",
-          mapskey
-          ].join(''), function(map) {
+        $.getJSON([`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${mapskey}`], map => {
           function place() {
             return map.results[0].address_components[3].long_name.toLowerCase() || "Unknown"         
           };
           $(".location").html(place);
         });
 
-        function getBackground() {
+        const getBackground = () => {
 
-          var backgrounds = {
-            "clear-day": 'img/clear-day.png',
-            "clear-night": 'img/clear-night.png',
-            "partly-cloudy-day": 'img/partly-cloudy-day.png',
-            "partly-cloudy-night": 'img/partly-cloudy-night.png',
-            "cloudy": 'img/cloudy.png',
-            "rain": 'img/rain.png',
+          const backgrounds = {
+            "clear-day": 'http://weatherify.scorpio.design/img/clear-day.png',
+            "clear-night": 'http://weatherify.scorpio.design/img/clear-night.png',
+            "partly-cloudy-day": 'http://weatherify.scorpio.design/img/partly-cloudy-day.png',
+            "partly-cloudy-night": 'http://weatherify.scorpio.design/img/partly-cloudy-night.png',
+            "cloudy": 'http://weatherify.scorpio.design/img/cloudy.png',
+            "rain": 'http://weatherify.scorpio.design/img/rain.png',
             "sleet": 'img/sleet.png',
-            "snow": 'img/wind.png',
+            "snow": 'https://codepen.io/sarwech/pen/gWRObV',
             "wind": 'img/wind.png',
             "fog": 'img/fog.png',
           };
 
-          var toSearch = "cloudytwo";
+          const toSearch = "cloudytwo";
 
-          function searchObj(obj, query) {
-            for (var key in obj) {
-              var value = obj[key];
-              if (typeof key === 'object') {
-                return value;
+          const searchObj = (obj, query) => {
+
+              for (var key in obj) {
+                  var value = obj[key];
+
+                  if (typeof key === 'object') {
+                      return value;
+                  }
+
+                  if (key === query) {
+                      return value;
+                  }
+
               }
 
-              if (key === query) {
-                return value;
-              }
-            }
           }
 
           console.log(searchObj(backgrounds, 'cloudy'));
